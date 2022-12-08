@@ -414,7 +414,7 @@ const drawViz = async (dataIn) => {
   // console.log("input_4", input_4);
   let forecast = [];
 
-  const holtWinters = new HoltWinters(1, 1, 2, 7);
+  const holtWinters = new HoltWinters(input_1, input_2, input_3, input_4);
   const historyNumbers = history.map((row) => row.metric);
   const predictedHistoryNumber = holtWinters.fit(historyNumbers);
   const predictedValues = holtWinters.predict(10);
@@ -506,7 +506,7 @@ const drawViz = async (dataIn) => {
 };
 
 // renders locally
-if (true) {
+if (false) {
   drawViz(local.message);
 } else {
   dscc.subscribeToData(drawViz, { transform: dscc.objectTransform });

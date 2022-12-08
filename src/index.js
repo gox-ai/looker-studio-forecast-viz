@@ -403,11 +403,13 @@ const drawViz = async (dataIn) => {
   });
 
   console.log("history", history);
-
-  const input_1 = dataIn.style.input_1.value;
-  const input_2 = dataIn.style.input_2.value;
-  const input_3 = dataIn.style.input_3.value;
-  const input_4 = dataIn.style.input_4.value;
+  const nPredictionValues = dataIn.style.n_prediction_value.value
+    ? dataIn.style.n_prediction_value.value
+    : 10;
+  const input_1 = dataIn.style.input_1.value ? dataIn.style.input_1.value : 1;
+  const input_2 = dataIn.style.input_2.value ? dataIn.style.input_2.value : 0;
+  const input_3 = dataIn.style.input_3.value ? dataIn.style.input_3.value : 0;
+  const input_4 = dataIn.style.input_4.value ? dataIn.style.input_4.value : 0;
   // console.log("input_1", input_1);
   // console.log("input_2", input_2);
   // console.log("input_3", input_3);
@@ -417,7 +419,7 @@ const drawViz = async (dataIn) => {
   const holtWinters = new HoltWinters(input_1, input_2, input_3, input_4);
   const historyNumbers = history.map((row) => row.metric);
   const predictedHistoryNumber = holtWinters.fit(historyNumbers);
-  const predictedValues = holtWinters.predict(10);
+  const predictedValues = holtWinters.predict(nPredictionValues);
 
   let lastDateValue = history[history.length - 1].date;
 

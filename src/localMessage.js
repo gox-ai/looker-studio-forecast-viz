@@ -152,6 +152,9 @@ export const message = {
     input_4: {
       value: 8,
     },
+    n_prediction_value: {
+      value: 7,
+    },
   },
   theme: {
     themeFillColor: {

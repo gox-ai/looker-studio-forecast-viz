@@ -338,6 +338,11 @@ argparse@^1.0.10, argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+arima@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/arima/-/arima-0.2.5.tgz#9da5cf88abe28f2c127a313dbf796898e1f1b841"
+  integrity sha512-DeACdPoXO3EbFo99oW5BcwMvu3TjgxzMfqd9T1gcPkKrQEsw2P08czMJHycbEjLnDKEcUNLVzhqi3a6raK8Eng==
+
 arr-diff@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/arr-diff/-/arr-diff-4.0.0.tgz#d6461074febfec71e7e15235761a329a5dc7c520"
@@ -2305,6 +2310,16 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
+holtwinters-md@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/holtwinters-md/-/holtwinters-md-0.0.4.tgz#8b8e94a5e31c0f0c38d318d4e3aa67567e29c6e2"
+  integrity sha512-YQxW9BEcHVjnnNyOVhd9ZoS5QdFwU4ysmaeWoQy5bo3FC1EKad465bHKav1bo8+KRRXSyElDmw5Pg/xs/smlhA==
+
+holtwinters@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/holtwinters/-/holtwinters-0.0.1.tgz#abe479b9582d83c469e670bc9825ad37cdc6df88"
+  integrity sha512-IyRG+bFgIuHSGeZBP/OAVwQlThdjVoYfvhesrNo0FZw+ZRVKge8PvgANE8Vf2VZhqcz2BRp5Wx2n8SQ8T3VMiA==
+
 homedir-polyfill@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/homedir-polyfill/-/homedir-polyfill-1.0.3.tgz#743298cef4e5af3e194161fbadcc2151d3a058e8"
@@ -3138,6 +3153,18 @@ module-deps@^6.2.3:
     subarg "^1.0.0"
     through2 "^2.0.0"
     xtend "^4.0.0"
+
+moment-timezone@^0.5.39:
+  version "0.5.39"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.39.tgz#342625a3b98810f04c8f4ea917e448d3525e600b"
+  integrity sha512-hoB6suq4ISDj7BDgctiOy6zljBsdYT0++0ZzZm9rtxIvJhIbQ3nmbgSWe7dNFGurl6/7b1OUkHlmN9JWgXVz7w==
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0":
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

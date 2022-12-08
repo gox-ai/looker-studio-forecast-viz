@@ -8,16 +8,16 @@
   "privacyPolicyUrl": "https://url",
   "termsOfServiceUrl": "https://url",
   "packageUrl": "https://url",
-  "devMode": true,
+  "devMode": false,
   "components": [
     {
       "name": "myViz",
       "description": "My first Community Visualization",
       "iconUrl": "https://url",
       "resource": {
-        "js": "gs://viz-codelab-demo/forcast_visualization/dev/index.js",
-        "config": "gs://viz-codelab-demo/forcast_visualization/dev/index.json",
-        "css": "gs://viz-codelab-demo/forcast_visualization/dev/index.css"
+        "js": "gs://viz-codelab-demo/first-viz/prod/index.js",
+        "config": "gs://viz-codelab-demo/first-viz/prod/index.json",
+        "css": "gs://viz-codelab-demo/first-viz/prod/index.css"
       }
     }
   ]

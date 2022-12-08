@@ -141,10 +141,10 @@ export const message = {
   },
   style: {
     input_1: {
-      value: 4,
+      value: 1,
     },
     input_2: {
-      value: 23,
+      value: 0,
     },
     input_3: {
       value: 7,

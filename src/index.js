@@ -6,6 +6,8 @@ import { getHeight, getWidth } from "@google/dscc";
 // const Ml = require("./ml.min.js")
 const HoltWinters = require("./holt_winters.js");
 const moment = require("moment-timezone");
+
+const ARMA = require("./arma.js")
 // const holtWinters = require("holtwinters")
 // console.log(holtWinters)
 
@@ -395,6 +397,7 @@ const moment = require("moment-timezone");
 const drawViz = async (dataIn) => {
   const parseTime = d3.timeParse("%Y%m%d");
   const tblList = dataIn.tables.DEFAULT;
+  // console.log(ARMA)
   let history = tblList.map((row) => {
     return {
       date: parseTime(row["dateID"][0]),
@@ -403,23 +406,28 @@ const drawViz = async (dataIn) => {
   });
 
   console.log("history", history);
-  const nPredictionValues = dataIn.style.n_prediction_value.value
-    ? dataIn.style.n_prediction_value.value
-    : 10;
+  // const nPredictionValues = dataIn.style.n_prediction_value.value
+  //   ? dataIn.style.n_prediction_value.value
+  //   : 10;
   const input_1 = dataIn.style.input_1.value ? dataIn.style.input_1.value : 1;
   const input_2 = dataIn.style.input_2.value ? dataIn.style.input_2.value : 0;
   const input_3 = dataIn.style.input_3.value ? dataIn.style.input_3.value : 0;
-  const input_4 = dataIn.style.input_4.value ? dataIn.style.input_4.value : 0;
+  // const input_4 = dataIn.style.input_4.value ? dataIn.style.input_4.value : 0;
   // console.log("input_1", input_1);
   // console.log("input_2", input_2);
   // console.log("input_3", input_3);
   // console.log("input_4", input_4);
   let forecast = [];
 
-  const holtWinters = new HoltWinters(input_1, input_2, input_3, input_4);
+  // const holtWinters = new HoltWinters(input_1, input_2, input_3, input_4);
   const historyNumbers = history.map((row) => row.metric);
-  const predictedHistoryNumber = holtWinters.fit(historyNumbers);
-  const predictedValues = holtWinters.predict(nPredictionValues);
+  // const predictedHistoryNumber = holtWinters.fit(historyNumbers);
+  // const predictedValues = holtWinters.predict(nPredictionValues);
+
+  const armaInstance = new ARMA(input_1, input_2)
+  armaInstance.fit(historyNumbers)
+  const predictedValues = armaInstance.predict(historyNumbers, input_3)
+  console.log("predictedValues", predictedValues)
 
   let lastDateValue = history[history.length - 1].date;
 

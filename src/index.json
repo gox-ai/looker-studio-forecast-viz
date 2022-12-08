@@ -31,31 +31,19 @@
       "label": "Chart Configuration",
       "elements": [
         {
-          "id": "n_prediction_value",
-          "label": "Number of Prediction Values",
-          "type": "INTERVAL",
-          "defaultValue": "5"
-        },
-        {
           "id": "input_1",
-          "label": "Weight for last value",
+          "label": "Auto Regression",
           "type": "INTERVAL",
-          "defaultValue": "5"
+          "defaultValue": "1"
         },
         {
           "id": "input_2",
-          "label": "Weight for trend value",
+          "label": "Moving Average",
           "type": "INTERVAL",
-          "defaultValue": "5"
+          "defaultValue": "3"
         },
         {
           "id": "input_3",
-          "label": "Weight for seasonal data",
-          "type": "INTERVAL",
-          "defaultValue": "5"
-        },
-        {
-          "id": "input_4",
           "label": "Length of season",
           "type": "INTERVAL",
           "defaultValue": "5"

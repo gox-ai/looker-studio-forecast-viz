@@ -2,16 +2,16 @@ const dscc = require("@google/dscc");
 const viz = require("@google/dscc-scripts/viz/initialViz.js");
 const local = require("./localMessage.js");
 const d3 = require("d3");
-import axios from "axios";
+import { getHeight, getWidth } from "@google/dscc";
 // const Ml = require("./ml.min.js")
-const HoltWinters = require("./holt_winters.js")
-const moment = require("moment-timezone")
+const HoltWinters = require("./holt_winters.js");
+const moment = require("moment-timezone");
 
+const ARMA = require("./arma.js")
 // const holtWinters = require("holtwinters")
 // console.log(holtWinters)
 
 // let augmentedDataSet = holtWinters.getAugumentedDataset
-
 
 // write viz code here
 // const drawViz = async (dataIn) => {
@@ -43,8 +43,6 @@ const moment = require("moment-timezone")
 //   // const predictedHistoryNumber = hotWinters.fit(historyNumbers)
 //   // const predictedValues = hotWinters.predict(10)
 //   // console.log(predictedValues)
-
-
 
 //   console.log(HoltWinters)
 //   let forecast = []
@@ -235,10 +233,6 @@ const moment = require("moment-timezone")
 
 //   // const ExponentialRegression = Ml.ExponentialRegression
 
-
-
-
-
 //   // .sort(sortByDateAscending);
 
 //   // Scale the range of the data
@@ -401,9 +395,9 @@ const moment = require("moment-timezone")
 // };
 
 const drawViz = async (dataIn) => {
-
   const parseTime = d3.timeParse("%Y%m%d");
   const tblList = dataIn.tables.DEFAULT;
+  // console.log(ARMA)
   let history = tblList.map((row) => {
     return {
       date: parseTime(row["dateID"][0]),
@@ -412,23 +406,38 @@ const drawViz = async (dataIn) => {
   });
 
   console.log("history", history);
+  // const nPredictionValues = dataIn.style.n_prediction_value.value
+  //   ? dataIn.style.n_prediction_value.value
+  //   : 10;
+  const input_1 = dataIn.style.input_1.value ? dataIn.style.input_1.value : 1;
+  const input_2 = dataIn.style.input_2.value ? dataIn.style.input_2.value : 0;
+  const input_3 = dataIn.style.input_3.value ? dataIn.style.input_3.value : 0;
+  // const input_4 = dataIn.style.input_4.value ? dataIn.style.input_4.value : 0;
+  // console.log("input_1", input_1);
+  // console.log("input_2", input_2);
+  // console.log("input_3", input_3);
+  // console.log("input_4", input_4);
+  let forecast = [];
 
-  let forecast = []
-  
-  const holtWinters = new HoltWinters(1, 1, 2, 7)
-  const historyNumbers = history.map(row => row.metric)
-  const predictedHistoryNumber = holtWinters.fit(historyNumbers)
-  const predictedValues = holtWinters.predict(10)
+  // const holtWinters = new HoltWinters(input_1, input_2, input_3, input_4);
+  const historyNumbers = history.map((row) => row.metric);
+  // const predictedHistoryNumber = holtWinters.fit(historyNumbers);
+  // const predictedValues = holtWinters.predict(nPredictionValues);
 
-  let lastDateValue = history[history.length - 1].date
+  const armaInstance = new ARMA(input_1, input_2)
+  armaInstance.fit(historyNumbers)
+  const predictedValues = armaInstance.predict(historyNumbers, input_3)
+  console.log("predictedValues", predictedValues)
 
-  forecast = predictedValues.map(value => {
-    lastDateValue = moment.utc(lastDateValue).add(1, "days").format("YYYYMMDD")
+  let lastDateValue = history[history.length - 1].date;
+
+  forecast = predictedValues.map((value) => {
+    lastDateValue = moment.utc(lastDateValue).add(1, "days").format("YYYYMMDD");
     return {
       dateID: [lastDateValue],
-      metricID: [value]
-    }
-  })
+      metricID: [value],
+    };
+  });
 
   const margin = { top: 20, right: 20, bottom: 30, left: 70 };
   const width = 1000 - margin.left - margin.right;
@@ -494,7 +503,7 @@ const drawViz = async (dataIn) => {
     .attr("stroke", "steelblue")
     .attr("stroke-width", 1.5)
     .attr("d", line);
-  console.log("forecast", forecast)
+  console.log("forecast", forecast);
 
   svg
     .append("path")
@@ -507,7 +516,7 @@ const drawViz = async (dataIn) => {
 };
 
 // renders locally
-if (true) {
+if (false) {
   drawViz(local.message);
 } else {
   dscc.subscribeToData(drawViz, { transform: dscc.objectTransform });

@@ -25,5 +25,30 @@
       ]
     }
   ],
-  "style": []
+  "style": [
+    {
+      "id": "barInfo",
+      "label": "ARMA Prediction Config",
+      "elements": [
+        {
+          "id": "input_1",
+          "label": "Auto Regression",
+          "type": "INTERVAL",
+          "defaultValue": "1"
+        },
+        {
+          "id": "input_2",
+          "label": "Moving Average",
+          "type": "INTERVAL",
+          "defaultValue": "3"
+        },
+        {
+          "id": "input_3",
+          "label": "No. of predictions",
+          "type": "INTERVAL",
+          "defaultValue": "5"
+        }
+      ]
+    }
+  ]
 }

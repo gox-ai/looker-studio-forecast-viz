@@ -26,6 +26,7 @@
     "path-browserify": "^1.0.1"
   },
   "dependencies": {
+    "@ai-on-browser/data-analysis-models": "^0.13.0",
     "arima": "^0.2.5",
     "axios": "^1.2.1",
     "d3": "^7.7.0",

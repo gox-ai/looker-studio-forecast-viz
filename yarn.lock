@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@ai-on-browser/data-analysis-models@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@ai-on-browser/data-analysis-models/-/data-analysis-models-0.13.0.tgz#94767cfb7bd1dbf35a2f2466646d61d875091bcf"
+  integrity sha512-PuiQNLnxtuK0BMMOV7DV8ddDuYH7qXQ4XB9McMTPUbjNs/gLTY9ysvaf4EiVttKSb8y6/bwreJ9cXa3jOKHRUQ==
+
 "@google/dscc-scripts@https://github.com/jamesyoon11/dscc-scripts.git":
   version "1.0.20"
   resolved "https://github.com/jamesyoon11/dscc-scripts.git#25e6df8dd504556de575f4749a70e9461ffd5a98"

@@ -28,7 +28,7 @@
   "style": [
     {
       "id": "barInfo",
-      "label": "Chart Configuration",
+      "label": "ARMA Prediction Config",
       "elements": [
         {
           "id": "input_1",
@@ -44,7 +44,7 @@
         },
         {
           "id": "input_3",
-          "label": "Length of season",
+          "label": "No. of predictions",
           "type": "INTERVAL",
           "defaultValue": "5"
         }

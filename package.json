@@ -1,0 +1,33 @@
+{
+  "dsccViz": {
+    "gcsDevBucket": "gs://viz-codelab-demo/forcast_visualization/dev",
+    "gcsProdBucket": "gs://viz-codelab-demo/first-viz/prod",
+    "components": [
+      {
+        "jsFile": "index.js",
+        "jsonFile": "index.json",
+        "cssFile": "index.css"
+      }
+    ]
+  },
+  "scripts": {
+    "build:dev": "dscc-scripts viz build -d dev",
+    "build:prod": "dscc-scripts viz build -d prod",
+    "push:dev": "dscc-scripts viz push -d dev",
+    "push:prod": "dscc-scripts viz push -d prod",
+    "update_message": "dscc-scripts viz update_message -f object",
+    "start": "dscc-scripts viz start"
+  },
+  "devDependencies": {
+    "@google/dscc": "^0.3.17",
+    "@google/dscc-scripts": "https://github.com/jamesyoon11/dscc-scripts.git",
+    "browserify": "^17.0.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "path-browserify": "^1.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "d3": "^7.7.0",
+    "picasso.js": "^1.9.10"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "gcsDevBucket": "gs://viz-codelab-demo/forcast_visualization/dev",
+  "gcsProdBucket": "gs://viz-codelab-demo/first-viz/prod",
+  "jsFile": "index.js",
+  "jsonFile": "index.json",
+  "cssFile": "index.css"
+}

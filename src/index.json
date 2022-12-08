@@ -25,5 +25,36 @@
       ]
     }
   ],
-  "style": []
+  "style": [
+    {
+      "id": "barInfo",
+      "label": "Chart Configuration",
+      "elements": [
+        {
+          "id": "input_1",
+          "label": "Input 1",
+          "type": "INTERVAL",
+          "defaultValue": "5"
+        },
+        {
+          "id": "input_2",
+          "label": "Input 2",
+          "type": "INTERVAL",
+          "defaultValue": "5"
+        },
+        {
+          "id": "input_3",
+          "label": "Input 3",
+          "type": "INTERVAL",
+          "defaultValue": "5"
+        },
+        {
+          "id": "input_4",
+          "label": "Input 4",
+          "type": "INTERVAL",
+          "defaultValue": "5"
+        }
+      ]
+    }
+  ]
 }

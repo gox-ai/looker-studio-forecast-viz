@@ -2,16 +2,14 @@ const dscc = require("@google/dscc");
 const viz = require("@google/dscc-scripts/viz/initialViz.js");
 const local = require("./localMessage.js");
 const d3 = require("d3");
-import axios from "axios";
+import { getHeight, getWidth } from "@google/dscc";
 // const Ml = require("./ml.min.js")
-const HoltWinters = require("./holt_winters.js")
-const moment = require("moment-timezone")
-
+const HoltWinters = require("./holt_winters.js");
+const moment = require("moment-timezone");
 // const holtWinters = require("holtwinters")
 // console.log(holtWinters)
 
 // let augmentedDataSet = holtWinters.getAugumentedDataset
-
 
 // write viz code here
 // const drawViz = async (dataIn) => {
@@ -43,8 +41,6 @@ const moment = require("moment-timezone")
 //   // const predictedHistoryNumber = hotWinters.fit(historyNumbers)
 //   // const predictedValues = hotWinters.predict(10)
 //   // console.log(predictedValues)
-
-
 
 //   console.log(HoltWinters)
 //   let forecast = []
@@ -235,10 +231,6 @@ const moment = require("moment-timezone")
 
 //   // const ExponentialRegression = Ml.ExponentialRegression
 
-
-
-
-
 //   // .sort(sortByDateAscending);
 
 //   // Scale the range of the data
@@ -401,7 +393,6 @@ const moment = require("moment-timezone")
 // };
 
 const drawViz = async (dataIn) => {
-
   const parseTime = d3.timeParse("%Y%m%d");
   const tblList = dataIn.tables.DEFAULT;
   let history = tblList.map((row) => {
@@ -413,22 +404,30 @@ const drawViz = async (dataIn) => {
 
   console.log("history", history);
 
-  let forecast = []
-  
-  const holtWinters = new HoltWinters(1, 1, 2, 7)
-  const historyNumbers = history.map(row => row.metric)
-  const predictedHistoryNumber = holtWinters.fit(historyNumbers)
-  const predictedValues = holtWinters.predict(10)
+  const input_1 = dataIn.style.input_1.value;
+  const input_2 = dataIn.style.input_2.value;
+  const input_3 = dataIn.style.input_3.value;
+  const input_4 = dataIn.style.input_4.value;
+  // console.log("input_1", input_1);
+  // console.log("input_2", input_2);
+  // console.log("input_3", input_3);
+  // console.log("input_4", input_4);
+  let forecast = [];
 
-  let lastDateValue = history[history.length - 1].date
+  const holtWinters = new HoltWinters(1, 1, 2, 7);
+  const historyNumbers = history.map((row) => row.metric);
+  const predictedHistoryNumber = holtWinters.fit(historyNumbers);
+  const predictedValues = holtWinters.predict(10);
 
-  forecast = predictedValues.map(value => {
-    lastDateValue = moment.utc(lastDateValue).add(1, "days").format("YYYYMMDD")
+  let lastDateValue = history[history.length - 1].date;
+
+  forecast = predictedValues.map((value) => {
+    lastDateValue = moment.utc(lastDateValue).add(1, "days").format("YYYYMMDD");
     return {
       dateID: [lastDateValue],
-      metricID: [value]
-    }
-  })
+      metricID: [value],
+    };
+  });
 
   const margin = { top: 20, right: 20, bottom: 30, left: 70 };
   const width = 1000 - margin.left - margin.right;
@@ -494,7 +493,7 @@ const drawViz = async (dataIn) => {
     .attr("stroke", "steelblue")
     .attr("stroke-width", 1.5)
     .attr("d", line);
-  console.log("forecast", forecast)
+  console.log("forecast", forecast);
 
   svg
     .append("path")
